@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}JELLY{% endblock title %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  {% comment %} <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" /> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/flowbite.css' %}">
+  <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
+  <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+  {% block css %}{% endblock css %}
+</head>
+<body>
+  {% comment %} 
+    네브바가 필요한 템플릿에서는
+    {% block navbar %}
+      {% include 'navbar.html' %}
+    {% endblock navbar %}
+    추가해주시고 필요 없는 템플릿에서는 blcok 없이 작성해주시면 됩니다
+    사이드바도 똑같습니다! 
+    혹시 더 효율적인 방법을 알고 계시다면 말씀해주세요
+  {% endcomment %}
+  {% block navbar %}
+  {% endblock navbar %}
+
+  {% block side %}
+  {% endblock side %}
+
+  <main>
+    {% block content %}
+    {% endblock content %}
+  </main>
+
+  <footer class="bg-white">
+    <div class="footer-wrapper">
+      <hr class="mb-4 border-gray-200 sm:mx-auto" />
+      <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Flowbite™</a>. All Rights Reserved.
+      </span>
+      <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+          <li>
+              <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+          </li>
+          <li>
+              <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+          </li>
+          <li>
+              <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+          </li>
+          <li>
+              <a href="#" class="hover:underline">Contact</a>
+          </li>
+      </ul>
+      </div>
+    </div>
+  </footer>
+
+  
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% block script %}
+{% endblock script %}
+</html>

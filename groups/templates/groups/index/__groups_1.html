@@ -1,0 +1,40 @@
+{% load static %}
+{# id=group-area#}
+  <div class="row menu">
+    <div id="group-search-bar" class="menu-item">
+      <form action"#" method="get">
+        <input id="search-input" type="search" placeholder="{{ user }} : {{ groups|length }}개의 그룹">
+      </form>
+    </div>
+      <button id="group-create-button"
+              class="menu-item"
+              data-modal-target="GroupCreate-modal" 
+              data-modal-toggle="GroupCreate-modal">
+        <div class="square">
+        <div class="inner">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 4C12.5523 4 13 4.44772 13 5V19C13 19.5523 12.5523 20 12 20C11.4477 20 11 19.5523 11 19V5C11 4.44772 11.4477 4 12 4Z"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z"/>
+          </svg>
+        </div>
+        </div>
+      </button>
+  </div>
+  <div class="row group-button">
+    <div id="group-buttons-grid">
+      {% for group in groups %}
+        {% include 'groups/index/__group_button.html' with group=group %}
+      {% endfor %}
+      {% comment %} <button class="item button">
+        <a href="#">
+          <div class="square">
+            <div class="inner">
+              <div class="group-button-no-thumbnail">
+                <span>썸네일이 없는 그룹</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </button> {% endcomment %}
+  </div>
+  </div>

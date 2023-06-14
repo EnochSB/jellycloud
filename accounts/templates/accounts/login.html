@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/accounts/login.css' %}"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock css %}
+
+
+
+{% block content %}
+<div>
+  <div class='login-container'>
+    <div class="owl-carousel owl-theme">
+      <div><img src="{% static 'img/calendar_sample.png' %}" alt=""></div>
+      <div><img src="{% static 'img/blank_profile_img.png' %}" alt=""></div>
+      <div><img src="{% static 'img/calendar_sample.png' %}" alt=""></div>
+    </div>
+    <div class='login-box'>
+      <div class='logo'><img src="{% static 'img/index_logo.png' %}" alt=""></div>
+      <form action="{% url 'accounts:login' %}" method="POST">
+        {% csrf_token %}
+        {% for field in form  %}
+        <div>
+            {{ field }}
+        </div>
+        {% endfor %}
+        {% if request.GET.next %}
+          <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        <button class='login-btn'>로그인</button>
+      </form>
+      <a class='login-btn' href="{% url 'accounts:signup' %}">회원가입</a>
+      <div class='bar'></div>
+      {% comment %} 소셜로그인 {% endcomment %}
+      {% load socialaccount %}
+      <a href="{% provider_login_url 'kakao' method='oauth2' %}" class="social--login">
+        <img style='width: 13rem; height: 2.5rem' src="{% static 'img/kakao_login.png' %}" alt="">
+      </a>
+      <a href="{% provider_login_url 'google' method='oauth2' %}" class="social--login">
+        <div class='social-box'>
+          <img style='width: 2rem; margin: 10px' src="{% static 'img/google_logo.jpg' %}" alt="">
+          <p style='margin-left: 20px'>구글 로그인</p>
+        </div>
+      </a> 
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  $('.owl-carousel').owlCarousel({
+      loop:false,
+      margin:10,
+      autoplay:true,           // 자동재생 여부
+      autoplayTimeout:1800,    // 재생간격
+      rewind: true,
+      nav:false,
+      responsive:{
+          0:{
+              items:1,
+              slideBy:1,
+              rows:1,
+          },
+          
+      }
+  })
+</script>
+
+{% comment %} <script type="text/javascript">
+  $(document).ready(function(){
+      var owl = $('.owl-carousel');
+      
+      owl.owlCarousel({
+          items:3,                 // 한번에 보여줄 아이템 수
+          loop:true,               // 반복여부
+          margin:35,               // 오른쪽 간격
+          autoplay:true,           // 자동재생 여부
+          autoplayTimeout:1800,    // 재생간격
+          autoplayHoverPause:true  //마우스오버시 멈출지 여부
+      });    
+      
+      $('.customNextBtn').click(function() {
+          owl.trigger('next.owl.carousel');
+      })
+      
+      $('.customPrevBtn').click(function() {
+          owl.trigger('prev.owl.carousel', [300]);
+      })
+  });
+  </script> {% endcomment %}
+{% endblock script %}

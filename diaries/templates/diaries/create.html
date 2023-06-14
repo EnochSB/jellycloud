@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JELLY | 글 작성{% endblock title %}
+
+{% block css %}
+{% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> {% endcomment %}
+<link rel="stylesheet" href="{% static 'css/diary_create.css' %}">
+{% endblock css %}
+
+{% block side %}
+  {% include 'sidebar.html' %}
+{% endblock side %}
+
+
+{% block content %}
+<div class="wrapper">
+  <div class="content">
+    <div class="hidden absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white rounded-full -top-2 -right-2 dark:border-gray-900" id="check">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#F05252" class="w-6 h-6">
+        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+      </svg>      
+    </div>
+    <form action="{% block url %}{% url 'diaries:create' %}{% endblock url %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media }}
+      {% for field in form %}
+      <div>
+        {{ field.label_tag }}
+        {{ field }}
+      </div>
+      {% endfor %}
+      <div class="btns">
+        <div id="select-thumbnail-btn" class="main-btn select">썸네일 선택하기</div>
+        <div class="flex gap-4">
+          <input type="submit" value="작성" class="main-btn bg-[var(--color-main)]">
+          <a href="{% url 'diaries:index' %}" class="main-btn back" onclick="return confirm('글쓰기를 종료하시겠습니까?\n작성 중인 글은 저장되지 않습니다. ')">취소</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="thumbnail-btn">
+  <span>썸네일</span>
+</div>
+{% endblock content %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+<script src="{% static 'js/diary_create.js' %}"></script>
+{% endblock script %}

@@ -1,0 +1,427 @@
+.image img {
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.image {
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  padding-left: 146px;
+}
+
+.content {
+  padding: 3rem 1rem 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* header : 그룹 정보가 담긴 div 관련 css */
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.group-img {
+  width: 10rem;
+  height: 10rem;
+}
+
+.group-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1rem;
+  padding: 0.5rem 2rem 0.5rem 0;
+}
+
+.level {
+  width: 180px;
+}
+
+.character {
+  width: 8rem;
+  height: 8rem;
+}
+
+.character.image {
+  border-radius: 0;
+}
+
+.jelly-img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.group-description {
+  word-break: break-word;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.group-name {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.group-intro {
+  word-break: break-word;
+}
+
+.user.main-btn {
+  background-color: var(--color-gray);
+}
+
+.user.main-btn:hover {
+  background-color: #c3c3c3;
+}
+
+#popover-bottom {
+  z-index: 50;
+}
+
+.user-list {
+  max-height: 180px;
+  overflow-y: scroll;
+}
+
+/* tab-list : 컨텐츠를 바꿀 수 있는 버튼 관련 css */
+
+.tab-list {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
+  border-top: 1px solid var(--color-main-light);
+}
+
+.tab-content {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* .tab-content::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1200px;
+  height: 1px;
+  background: var(--color-main-light);
+} */
+
+.tab-btn {
+  padding: 1rem;
+  color: var(--color-gray-dark);
+  font-weight: 500;
+  text-align: center;
+}
+
+.tab-btn button {
+  width: 42px;
+}
+
+#post-tab[aria-selected=true], #calendar-tab[aria-selected=true], #chat-tab[aria-selected=true], #album-tab[aria-selected=true] {
+  position: relative;
+  color: black;
+}
+
+#post-tab[aria-selected=true]::before, #calendar-tab[aria-selected=true]::before, #chat-tab[aria-selected=true]::before, #album-tab[aria-selected=true]::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -1.05rem;
+  left: -1rem;
+  width: 75px;
+  height: 0.125rem;
+  background: var(--color-main)
+}
+
+/* post-list : 게시글 탭 관련 css */
+
+#accordion-collapse {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.create.main-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: -0.375rem;
+  right: 0.125rem;
+  z-index: 15;
+}
+
+#notice-btn {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  background-color: transparent;
+}
+
+#notice-btn span {
+  color: black;
+}
+
+.notice-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid var(--color-gray);
+  border-radius: 0.5rem;
+}
+
+.notice-link {
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  border-bottom: 1px solid var(--color-gray);
+  text-align: start;
+}
+
+.notice-link:first-child {
+  padding-top: 0;
+}
+
+.notice-link:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.notice-link:hover, .notice-link button:hover {
+  text-decoration: underline;
+}
+
+.post-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.no-post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 330px;
+  width: 100%;
+  color: #a9a9a9;
+  font-size: 1.25rem;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid var(--color-main);
+  border-radius: 0.5rem;
+}
+
+.post:hover {
+  border-width: 3px;
+}
+
+.post:hover .post-detail {
+  color: var(--color-main-dark);
+}
+
+.delete {
+  color: #ff5656;
+  cursor: pointer;
+}
+
+.delete.main-btn {
+  display: inline-block;
+  background-color: #ff5656;
+  color: white;
+}
+
+.delete.main-btn:hover {
+  background-color: #e74b4b;
+}
+
+.post .user {
+  margin: 0 3rem 0 1rem;
+}
+
+.user-name {
+  width: 6rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.user-img {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 0.5rem auto;
+}
+
+.post-link {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.post-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.meeting {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 0.25rem;
+  color: var(--color-gray-dark);
+  font-size: 0.85rem;
+}
+
+.meeting-name {
+  position: relative;
+}
+
+.meeting-name::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0.125rem;
+  right: -1rem;
+  width: 0.1rem;
+  height: 1rem;
+  background: var(--color-gray);
+}
+
+.post-detail {
+  margin-bottom: 0.25rem;
+  display: -webkit-box;
+  max-width: 800px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reaction {
+  display: inline-flex;
+  justify-content: end;
+  align-items: end;
+  flex-grow: 1;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-gray-dark);
+}
+
+.reaction-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.reaction-item:last-child {
+  margin-right: 0.5rem;
+}
+
+.post-img {
+  position: relative;
+  width: 12rem;
+  height: 8.375rem;
+  border-radius: 0.375rem;
+}
+
+.more-img {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  width: 1.75rem;
+  height: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.85rem;
+  border-radius: 0.25rem;
+}
+
+.vote {
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+  align-items: center;
+  background-color: var(--color-main-light);
+  border: none;
+}
+
+.vote-btn {
+  width: 100%;
+  text-align: start;
+}
+
+.vote:hover {
+  background-color: #c3c8ef;
+}
+
+.vote-hits {
+  flex-grow: 1;
+}
+
+.vote .meeting {
+  margin: 0;
+}
+
+.page-navigation {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+/* album 컨텐츠 관련 css */
+.album-list {
+  width: 900px;
+  margin: 2rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.album-img {
+  width: 18.25rem;
+  height: 18.25rem;
+}
+
+.album-img img {
+  transition: all 0.1s linear;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-img:hover img {
+  transform: scale(1.025);
+}

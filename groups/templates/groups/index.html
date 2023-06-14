@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/index/__calendar.css' %}" /> {% endcomment %}
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/index/testing.css' %}" />   {% endcomment %}
+{% endblock css %}
+{% block content %}
+
+    {% include 'navbar.html' %}
+
+    <div id="group-index">
+        <div class="content-container">
+            <div class="content-item">
+                {% comment %} calendar 표시 {% endcomment %}
+                <div id="calendar-area" class="item-wrapper">
+                    {% include 'groups/index/__calendar.html' with groups=groups %}
+                </div>
+            </div>
+            <div class="content-item">
+                {% comment %} 가입한 group 표시 {% endcomment %}
+                <div id="group-area" class="item-wrapper">{% include "groups/index/__groups.html" with groups=groups %}</div>
+            </div>
+        </div>
+    </div>
+
+    {% comment %} 그룹 생성 모달 {% endcomment %}
+    {% include 'groups/index/__group_create_modal.html' %}
+    
+<script src="{% static 'js/index.js' %}"></script>
+
+<!-- 그룹 생성 실패 시 alert -->
+{% if messages %}
+{% for message in messages %}
+  <script>alert('{{ message }}')</script>
+{% endfor %}
+{% endif %}
+
+
+{% endblock content %}

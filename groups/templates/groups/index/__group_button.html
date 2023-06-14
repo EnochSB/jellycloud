@@ -1,0 +1,17 @@
+
+
+<button class="item button">
+<a href="{% url 'groups:group_detail' group.pk %}">
+  <div class="square">
+    <div class="inner">
+      {% if group.thumbnail %}
+        <div class="group-button-thumbnail"><img src="{{ group.thumbnail.url }}" alt=""></div>
+      {% endif %}
+      <div class="group-button-name">
+        <span>{{ group.name }}</span>
+      </div>
+    </div>
+  </div>
+</a>
+</button>
+

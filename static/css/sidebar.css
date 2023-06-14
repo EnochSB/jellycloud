@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 130px;
+  height: 100vh;
+  background-color: var(--color-main-light);
+  align-items: center;
+  /* justify-content: center; */
+  overflow-y: scroll;
+}
+
+.aside::-webkit-scrollbar {
+  width: 5px;
+}
+
+.aside::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.aside::-webkit-scrollbar-thumb {
+  background-color: var(--color-main);
+  border-radius: 4px;
+}
+
+.aside::-webkit-scrollbar-thumb:hover {
+  background-color: #7B83C7;
+}
+
+.side-img {
+  width: 4.7rem;
+  height: 4.7rem;
+  border: white 3px solid;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.side-img-border-color{
+  width: 4.8rem;
+  height: 4.8rem;
+  border: #7B83C7 3.5px solid;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.side-plus {
+  margin-bottom: 150px;
+}
+
+.side-logo {
+  width: 85%;
+  height: 38px; 
+  border: 0px;
+  border-radius: 0%;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin: 20px auto 25px;
+}
+
+.bar {
+  width: 80px;
+  border: 2px white solid;
+  margin-bottom: 20px;
+}
+
+
+/* modal */
+
+.GroupCreate-modal-content form p {
+  width: 350px;
+}
+
+.GroupCreate-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-form {
+  padding: .5rem .75rem;
+  border: 1px solid darkgray;
+  border-radius: 10px;
+  margin-bottom: 0.3rem; 
+  width: 21rem;
+}
+
+.create-form[type=file] {
+  padding: 0;
+}
+
+.create-form:hover {
+  border-color: var(--color-main);
+}
+
+.GroupCreate-ModalToggle-btn {
+  background: none;
+  border: none;
+  height: 76px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.GroupCreate-ModalToggle-btn:hover {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.GroupCreate-btn {
+  border: solid var(--color-main);
+  background-color: var(--color-main);
+  width: 21rem;
+  height: 3rem;
+  border-radius: 10px;
+  color: white;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.GroupCreate-btn:hover {
+  border: #7B83C7;
+  background-color:#7B83C7;
+}
+
+.GroupCreate-txt {
+  color: #7B83C7;
+  font-weight: bold;
+}
+
+.Group-label {
+  /* color: #7B83C7; */
+  /* font-weight: bold; */
+}
