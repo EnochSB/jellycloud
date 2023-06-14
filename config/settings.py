@@ -11,25 +11,31 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os, json
 from dotenv import load_dotenv
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
+SECRETS_BASE = os.path.join(SECRETS_DIR, 'base.json')
 
+secrets = json.loads(open(SECRETS_BASE, 'rt').read())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = secrets['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '.amazonaws.com',
+]
 
 
 # Application definition
