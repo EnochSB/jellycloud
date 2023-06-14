@@ -31,7 +31,6 @@ django-extensions==3.2.1
 django-filter==23.2
 django-imagekit==4.1.0
 django-js-asset==2.0.0
-djangorestframework==3.14.0
 EditorConfig==0.12.3
 executing==1.2.0
 html-tag-names==0.1.2
